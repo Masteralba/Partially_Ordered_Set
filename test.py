@@ -3,7 +3,7 @@ import networkx as nx
 from networkx.drawing.nx_pydot import graphviz_layout
 
 prime_numbers1 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
-prime_numbers = [2, 3, 5, 7]
+prime_numbers = [2, 3, 5, 7, 11, 13, 17]
 
 def are_comparable(x, y):
     return ( ( x % y == 0) or ( y % x == 0) )
@@ -26,7 +26,7 @@ nodes = set()
 
 edges = []
 
-for i in range(1, 8):
+for i in range(1, 18):
     covering_arr = find_covering_arr(i)
     nodes.add(i)
     nodes.update(set(covering_arr))
@@ -48,5 +48,6 @@ G.add_edges_from(edges)
 
 # рисуем граф и отображаем его
 pos = graphviz_layout(G, prog="dot")
-nx.draw(G,with_labels=True, font_weight='bold')
+#nx.draw(G,with_labels=True, font_weight='bold')
+nx.draw(G, pos, with_labels=True)
 plt.show()
